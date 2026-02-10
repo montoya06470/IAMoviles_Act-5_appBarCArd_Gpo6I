@@ -11,20 +11,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myapp/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Renders main page correctly', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const AppCaffenio());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the AppBar title is correct.
+    expect(find.text('Bebidas Montoya'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Verify that the welcome text is present.
+    expect(find.text('Bienvenido a Caffenio'), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that the icons are present in the AppBar
+    expect(find.byIcon(Icons.coffee_maker), findsOneWidget);
+    expect(find.byIcon(Icons.local_cafe), findsOneWidget);
   });
 }
